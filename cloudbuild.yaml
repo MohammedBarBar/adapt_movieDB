@@ -8,6 +8,8 @@ steps:
     args:
       - '-c'
       - | 
+          npm install -g @adpt/cli
+
           gcloud config set compute/zone us-west1-b
 
           gcloud container clusters get-credentials mohammed-moviedb-dev-cluster
