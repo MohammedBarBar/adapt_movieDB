@@ -1,0 +1,37 @@
+steps:
+
+### Deployment by adapt
+  - id: 'pre-deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    env:
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - | 
+          gcloud config set compute/zone us-west1-b
+
+          gcloud container clusters get-credentials mohammed-moviedb-dev-cluster
+
+          gcloud auth configure-docker --quiet
+
+          export KUBE_DOCKER_REPO=gcr.io/devops5-analiza 
+
+
+#adapt run k8s-test --deployID omar-app-dev
+
+# Run Adapt
+  - id: 'deploy'
+    name: 'gcr.io/devops5-analiza/mohammed-adapt'
+    entrypoint: 'adapt' 
+    env: 
+    - 'KUBECONFIG=gcr.io/devops5-analiza'
+    - 'KUBE_DOCKER_REPO=gcr.io/devops5-analiza'
+    # args: ['run','k8s-test','--deployID','mohammed-']
+    args: ['update','mohammed-reactapp-dev']
+    dir: 'deploy'
+             
+
+### Timeout
+timeout: "1600s"
+options:
+ logging: CLOUD_LOGGING_ONLY
