@@ -5,6 +5,8 @@
   justify-content: center;
   color: #404040;
   min-height: 110vh;
+  background-color: black;
+  color: yellow;
 }
 
 .App-logo {
@@ -40,9 +42,11 @@
 
 .Movies .rt-tbody {
   font-size: 3.5vmin;
+  border: 1px solid;
 }
 
 .Movies .rt-thead {
   font-size: 4vmin;
   font-weight: bold;
+  border: 1px solid;
 }
