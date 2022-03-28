@@ -13,6 +13,8 @@ steps:
           gcloud container clusters get-credentials mohammed-moviedb-dev-cluster
 
           gcloud auth configure-docker --quiet
+          
+          cd deploy/  
 
           export KUBE_DOCKER_REPO=gcr.io/devops5-analiza 
 
@@ -21,7 +23,7 @@ steps:
 
 # Run Adapt
   - id: 'deploy'
-    name: 'gcr.io/devops5-analiza'
+    name: 'gcr.io/devops5-analiza/mohammed-reactapp-dev'
     entrypoint: 'adapt' 
     env: 
     - 'KUBECONFIG=gcr.io/devops5-analiza'
