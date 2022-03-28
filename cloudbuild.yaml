@@ -21,7 +21,7 @@ steps:
 
 # Run Adapt
   - id: 'deploy'
-    name: 'gcr.io/devops5-analiza/mohammed-adapt'
+    name: 'gcr.io/devops5-analiza'
     entrypoint: 'adapt' 
     env: 
     - 'KUBECONFIG=gcr.io/devops5-analiza'
